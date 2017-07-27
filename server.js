@@ -7,8 +7,10 @@ var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var routes = require('./routes/index');
 var users = require('./routes/users');
-var payment = require('./routes/payment');
+var payments = require('./routes/payments');
+var organizations = require('./routes/organizations');
 var app = express();
+mongoose.Promise = require('bluebird');
 mongoose.connect('mongodb://sa:change@ds121483.mlab.com:21483/payment', { useMongoClient: true });
 
 // view engine setup
@@ -25,7 +27,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
 app.use('/api/users', users);
-app.use('/api/payment', payment);
+app.use('/api/payments', payments);
+app.use('/api/organizations', organizations);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
