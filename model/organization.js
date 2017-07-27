@@ -2,11 +2,11 @@ var mongoose = require('mongoose');
 
 
 var organizationSchema = mongoose.Schema({
-        name: String,
-        address: String,
-        city: String,
-        state: String,
-        zip: String
+      name: String,
+      address: String,
+      city: String,
+      state: String,
+      zip: String
 });
 
 

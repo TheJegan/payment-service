@@ -51,7 +51,9 @@ router.post('/', corsSolution, (req, res, next)=>{
 
     org.save((err)=>{
         if(!err){
-            res.status(201).send(err);
+            res.status(201).send(org);
+        } else {
+          res.status(500).send(err);
         }
     });
 });
