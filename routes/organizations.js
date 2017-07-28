@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var Organization = require('../model/organization');
+var Payment = require('../model/payment');
 
 let corsSolution = (req, res, next) => {
 
@@ -38,6 +39,17 @@ router.get('/:id', corsSolution, (req, res, next)=>{
             res.status(400).send(err);
         }
     });
+});
+
+
+router.get('/:id/payments', corsSolution, (req, res, next)=>{
+    Payment.find({_property: req.params.id}, (err, orgs)=>{
+        if(!err){
+            res.status(200).send(orgs);
+        }else{
+            res.status(400).send(err);
+        }
+    })
 });
 
 router.post('/', corsSolution, (req, res, next)=>{

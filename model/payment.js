@@ -1,8 +1,8 @@
 var mongoose = require('mongoose');
 
 var paymentSchema = mongoose.Schema({
-	userId: {ref: 'User', type: mongoose.Schema.Types.ObjectId},
-	propertyId: {ref: 'Organization', type: mongoose.Schema.Types.ObjectId},
+	_user: {ref: 'User', type: mongoose.Schema.Types.ObjectId},
+	_property: {ref: 'Organization', type: mongoose.Schema.Types.ObjectId},
 	amount: String
 });
 
