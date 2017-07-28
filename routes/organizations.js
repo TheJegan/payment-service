@@ -31,7 +31,7 @@ router.get('/', corsSolution, (req, res, next) =>{
 });
 
 router.get('/:id', corsSolution, (req, res, next)=>{
-    Organization.find({_id: req.params.id}, (err, orgs)=>{
+    Organization.findOne({_id: req.params.id}, (err, orgs)=>{
         if(!err){
             res.status(200).send(orgs);
         }else{

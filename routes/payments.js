@@ -36,7 +36,7 @@ router.get('/', corsSolution, (req, res, next) => {
 
 router.get('/:id', corsSolution, (req, res, next) => {
     console.log('getting payments ' + req.params.id);
-  	Payment.find({_id: req.params.id}, (err, payment)=>{
+  	Payment.findOne({_id: req.params.id}, (err, payment)=>{
     if(!err){
       console.log(payment)
       res.status(200).send(payment)
