@@ -2,6 +2,7 @@ var mongoose = require('mongoose');
 var express = require('express');
 var router = express.Router();
 var Payment = require('../model/payment');
+let ObjectID = require('mongodb').ObjectID;
 
 let corsSolution = (req, res, next) => {
 
@@ -49,8 +50,8 @@ router.get('/:id', corsSolution, (req, res, next) => {
 
 router.post('/', corsSolution, (req, res, next) => {
   var pay = new Payment({
-    userId: req.body.userId,
-    propertyId: req.body.propertyId,
+    _user: new ObjectID( req.body._user ),
+    _property: new ObjectID(req.body._property),
     amount: req.body.amount
   });
 
@@ -60,7 +61,7 @@ router.post('/', corsSolution, (req, res, next) => {
       res.status(200).send(pay);
     }
   });
-  
+
 });
 
 router.delete('/:id', corsSolution, (req, res, next)=>{
