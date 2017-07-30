@@ -8,10 +8,19 @@ var mongoose = require('mongoose');
 var routes = require('./routes/index');
 var users = require('./routes/user');
 var payments = require('./routes/payment');
+var auth = require('./routes/auth');
 var organizations = require('./routes/organization');
+var passport = require('passport');
+var session = require('express-session');
 var app = express();
+
 mongoose.Promise = require('bluebird');
 mongoose.connect('mongodb://sa:change@ds121483.mlab.com:21483/payment', { useMongoClient: true });
+
+app.use(session({ secret: 'topsecret', resave: true, saveUninitialized: true }));
+app.use(passport.initialize());
+app.use(passport.session());
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -29,7 +38,7 @@ app.use('/', routes);
 app.use('/api/users', users);
 app.use('/api/payments', payments);
 app.use('/api/organizations', organizations);
-
+app.use('/api/auth', auth)
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
   var err = new Error('Not Found');

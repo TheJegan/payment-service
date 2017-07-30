@@ -5,8 +5,8 @@ var UserController = {
     console.log('create user');
 
     var user = new User({
-      name: req.body.name,
-      address: req.body.address
+      username: req.body.username,
+      password: req.body.password
     });
 
     user.save(err => {

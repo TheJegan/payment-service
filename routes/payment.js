@@ -3,11 +3,19 @@ var express = require('express');
 var router = express.Router();
 var PaymentController = require('../controllers/payment');
 
-router.get('/', PaymentController.getAll);
+let corsSolution = (req, res, next) => {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE'); // If needed
+  res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,contenttype'); // If needed
+  res.setHeader('Access-Control-Allow-Credentials', true); // If needed
 
-router.get('/:id', PaymentController.getById);
+  next();
+}
+router.get('/', corsSolution, PaymentController.getAll);
 
-router.post('/', PaymentController.create);
+router.get('/:id', corsSolution, PaymentController.getById);
+
+router.post('/', corsSolution, PaymentController.create);
 
 router.delete('/:id', corsSolution, PaymentController.delete);
 
