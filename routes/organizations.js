@@ -43,7 +43,7 @@ router.get('/:id', corsSolution, (req, res, next)=>{
 router.post('/', corsSolution, (req, res, next)=>{
     var org = new Organization({
         name: req.body.name,
-        address: req.body.adress,
+        address: req.body.address,
         city: req.body.city,
         state: req.body.state,
         zip: req.body.zip
