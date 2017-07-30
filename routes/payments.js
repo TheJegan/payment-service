@@ -32,7 +32,7 @@ router.get('/', corsSolution, (req, res, next) => {
       console.log(err);
       res.status(500).send(err);
     }
-  });
+  })
 });
 
 router.get('/:id', corsSolution, (req, res, next) => {
