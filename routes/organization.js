@@ -10,11 +10,7 @@ let corsSolution = (req, res, next) => {
   next();
 }
 
-router.option('/', corsSolution, (req, res, next) => {
-  next();
-});
-
-router.option('/:id', corsSolution, (req, res, next) => {
+router.options('*', corsSolution, (req, res, next) => {
   next();
 });
 

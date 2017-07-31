@@ -11,6 +11,10 @@ let corsSolution = (req, res, next) => {
   next();
 }
 
+router.options('*', corsSolution, (req, res, next) => {
+  next();
+});
+
 /* GET users listing. */
 router.get('/', UserController.getAll);
 
