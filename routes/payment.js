@@ -11,6 +11,11 @@ let corsSolution = (req, res, next) => {
 
   next();
 }
+
+router.option('*', corsSolution, (req, res, next) => {
+  next();
+});
+
 router.get('/', corsSolution, PaymentController.getAll);
 
 router.get('/:id', corsSolution, PaymentController.getById);

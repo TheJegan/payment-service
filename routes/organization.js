@@ -10,6 +10,10 @@ let corsSolution = (req, res, next) => {
   next();
 }
 
+router.option('*', corsSolution, (req, res, next) => {
+  next();
+});
+
 router.get('/', corsSolution ,OrganizationController.getOrganizations);
 
 router.get('/:id', corsSolution, OrganizationController.getOrganizationsById);
