@@ -13,6 +13,8 @@ var PaymentController = {
       if (!err) {
         console.log(pay)
         res.status(200).send(pay);
+      } else {
+        res.status(500).send(err);
       }
     });
   },

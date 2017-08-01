@@ -12,6 +12,6 @@ let corsSolution = (req, res, next) => {
   next();
 }
 
-router.post('/', passport.authenticate('local', { failureRedirect: '/login' }), authController.login);
+router.post('/', corsSolution, passport.authenticate('local', { failureRedirect: '/login' }), authController.login);
 
 module.exports = router;
