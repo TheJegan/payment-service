@@ -1,6 +1,6 @@
 var Organization = require('../models/organization');
 var Payment = require('../models/payment');
-
+var q = require('q');
 
 var OrganizationController = {
   getOrganizations: function (req, res, next) {
@@ -16,6 +16,17 @@ var OrganizationController = {
     Organization.findOne({ _id: req.params.id }, (err, orgs) => {
       if (!err) {
         res.status(200).send(orgs);
+      } else {
+        res.status(400).send(err);
+      }
+    });
+  },
+  getOrganizationsByName: function (req, res, next) {
+    let name = req.query.name;
+
+    Organization.findOne({ name: {$regex: name, $options: "i"} }, (err, org) => {
+      if (!err) {
+        res.status(200).send(org);
       } else {
         res.status(400).send(err);
       }

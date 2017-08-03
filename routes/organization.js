@@ -18,7 +18,9 @@ router.options('/:id', corsSolution, (req, res, next) => {
   next();
 });
 
-router.get('/', corsSolution ,OrganizationController.getOrganizations);
+router.get('/', corsSolution, OrganizationController.getOrganizations);
+
+router.get('/search', corsSolution, OrganizationController.getOrganizationsByName);
 
 router.get('/:id', corsSolution, OrganizationController.getOrganizationsById);
 

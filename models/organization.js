@@ -2,12 +2,13 @@ var mongoose = require('mongoose');
 
 
 var organizationSchema = mongoose.Schema({
-  name: String,
+  name: { type: String, unique: true },
   address: String,
   city: String,
   state: String,
   zip: String,
-  createdDate: { type: Date, default: Date.now }
+  createdDate: { type: Date, default: Date.now },
+  _users: {ref: "User", type: mongoose.Schema.Types.ObjectId}
 });
 
 

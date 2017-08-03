@@ -15,7 +15,7 @@ var session = require('express-session');
 var app = express();
 
 mongoose.Promise = require('bluebird');
-mongoose.connect('mongodb://sa:change@ds121483.mlab.com:21483/payment', { useMongoClient: true });
+mongoose.connect('mongodb://localhost/payment', { useMongoClient: true });
 
 app.use(session({ secret: 'topsecret', resave: true, saveUninitialized: true }));
 app.use(passport.initialize());
@@ -38,7 +38,7 @@ app.use('/', routes);
 app.use('/api/users', users);
 app.use('/api/payments', payments);
 app.use('/api/organizations', organizations);
-app.use('/api/auth', auth)
+app.use('/auth', auth)
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
   var err = new Error('Not Found');
