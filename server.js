@@ -12,10 +12,11 @@ var auth = require('./routes/auth');
 var organizations = require('./routes/organization');
 var passport = require('passport');
 var session = require('express-session');
+var config = require('config');
 var app = express();
 
 mongoose.Promise = require('bluebird');
-mongoose.connect('mongodb://localhost/payment', { useMongoClient: true });
+mongoose.connect(config.paymentDBUri, { useMongoClient: true });
 
 app.use(session({ secret: 'topsecret', resave: true, saveUninitialized: true }));
 app.use(passport.initialize());
