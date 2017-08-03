@@ -12,7 +12,7 @@ var auth = require('./routes/auth');
 var organizations = require('./routes/organization');
 var passport = require('passport');
 var session = require('express-session');
-var config = require('config');
+var config = require('./config');
 var app = express();
 
 mongoose.Promise = require('bluebird');
