@@ -1,6 +1,5 @@
 var mongoose = require('mongoose');
 
-
 var organizationSchema = mongoose.Schema({
   name: { type: String, unique: true },
   address: String,
@@ -8,7 +7,8 @@ var organizationSchema = mongoose.Schema({
   state: String,
   zip: String,
   createdDate: { type: Date, default: Date.now },
-  _users: {ref: "User", type: mongoose.Schema.Types.ObjectId}
+  _users: { ref: "User", type: mongoose.Schema.Types.ObjectId },
+  _apartments: { ref: "Apartment", type: mongoose.Schema.Types.ObjectId }
 });
 
 
