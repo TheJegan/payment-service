@@ -1,6 +1,8 @@
 var express = require('express');
 var router = express.Router();
 var OrganizationController = require('../controllers/organization');
+var ApartmentController = require('../controllers/apartment');
+
 let corsSolution = (req, res, next) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE'); // If needed
@@ -26,7 +28,11 @@ router.get('/:id', corsSolution, OrganizationController.getOrganizationsById);
 
 router.get('/:id/payments', corsSolution, OrganizationController.getPayments);
 
+router.get('/:organizationId/apartments', corsSolution, ApartmentController.getApartments);
+
 router.post('/', corsSolution, OrganizationController.createPayment);
+
+router.post('/:organizationId/apartments', corsSolution, ApartmentController.createApartment);
 
 router.delete('/:id', corsSolution, OrganizationController.delete);
 

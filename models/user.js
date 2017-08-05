@@ -10,6 +10,7 @@ var userSchema = mongoose.Schema({
   notes: String,
   saltValue: "",
   isSuspended: { type: Boolean, default: false },
+  _apartment: { ref: 'Apartment', type: mongoose.Schema.Types.ObjectId }
 });
 
 module.exports = mongoose.model('User', userSchema);

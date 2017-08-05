@@ -1,5 +1,5 @@
 var Apartment = require('../models/apartment');
-let ObjectID = require('mongodb').ObjectID;
+let ObjectId = require('mongodb').ObjectID;
 
 var ApartmentController = {
   getApartments: (req, res, next) => {
@@ -14,12 +14,20 @@ var ApartmentController = {
     });
   },
   createApartment: (req, res, next) => {
-    let organizationId = req.body.organizationId;
+    let organizationId = req.params.organizationId;
     let number = req.body.number;
 
     let apartment = new Apartment({
       _organization: new ObjectId(organizationId),
       number: number
+    });
+
+    apartment.save(err => {
+      if (!err) {
+        res.status(200).send(apartment);
+      }else{
+        res.status(400).send(err);
+      }
     });
   }
 }
