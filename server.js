@@ -10,6 +10,7 @@ var users = require('./routes/user');
 var payments = require('./routes/payment');
 var auth = require('./routes/auth');
 var organizations = require('./routes/organization');
+var apartments = require('./routes/apartment');
 var passport = require('passport');
 var session = require('express-session');
 var config = require('./config');
@@ -39,6 +40,7 @@ app.use('/', routes);
 app.use('/api/users', users);
 app.use('/api/payments', payments);
 app.use('/api/organizations', organizations);
+app.use('/api/apartments', apartments);
 app.use('/auth', auth)
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
