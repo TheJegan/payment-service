@@ -20,6 +20,10 @@ router.options('/:id', corsSolution, (req, res, next) => {
   next();
 });
 
+router.options('/:organizationId/apartments', corsSolution, (req, res, next) => {
+  next();
+});
+
 router.get('/', corsSolution, OrganizationController.getOrganizations);
 
 router.get('/search', corsSolution, OrganizationController.getOrganizationsByName);
